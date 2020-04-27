@@ -40,6 +40,19 @@ def show_editing_product(product_id):
     })
     return render_template('edit_listing.template.html', product= product)
 
+@app.route('/edit_listing/<product_id>', methods=["POST"])
+def process_edit_product(product_id):
+    client[DB_NAME].carousell.update_one({
+        "_id": ObjectId(product_id)
+    },{
+        "$set": {
+                "Name":request.form.get("name"),
+                "Price":request.form.get("price"),
+                "Description":request.form.get("description")
+        }
+    })
+    return redirect(url_for("show_product"))
+
 
 
 # "magic code" -- boilerplate
