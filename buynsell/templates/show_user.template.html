@@ -7,14 +7,10 @@
     <title>Document</title>
 </head>
 <body>
-    {%for r in result %}
+    {%for r in user %}
     <ul>
-        <li>Name:{{r.Name}}</li>
-        <li>Price:{{r.Price}}</li>
-        <li>Description:{{r.Description}}</li>
-        <li>Date Posted:{{r.date}}</li>
-        <li>Posted By: {{r.username}}</li>
-        <li>Email: {{r.email}}</li>
+        <li>Username:{{r.username}}</li>
+        <li>Email:{{r.email}}</li>
         
     </ul>
     {%endfor%}

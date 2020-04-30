@@ -1,6 +1,7 @@
 from flask import Flask, render_template, request, redirect, url_for
 import pymongo
 import os
+import datetime
 from bson.objectid import ObjectId
 from dotenv import load_dotenv
 load_dotenv()
@@ -13,6 +14,7 @@ DB_NAME = "carousell"
 # create the flask app and set the session
 app = Flask(__name__)
 
+
 @app.route('/show_product')
 def show_product():
     all_product = client[DB_NAME].carousell.find()
@@ -23,14 +25,17 @@ def listing_product():
     return render_template('listing.template.html')
 
 @app.route('/create_listing', methods=['POST'])
-def process_edit_listing_product():
+def process_create_listing():
     client.carousell.carousell.insert_one({
-        "Name":request.form.get("name"),
-        "Price":request.form.get("price"),
-        "Description":request.form.get("description")
+        "Name": request.form.get("name"),
+        "Price": request.form.get("price"),
+        "Description": request.form.get("description"),
+        "date": datetime.datetime.strptime(request.form.get('date'), "%Y-%m-%d"),
+        "email": request.form.get("email"),
+        "username": request.form.get("username")
 
     })
-    return "added"
+    return redirect(url_for("show_product"))
 
 
 @app.route('/edit_listing/<product_id>')
@@ -52,6 +57,27 @@ def process_edit_product(product_id):
         }
     })
     return redirect(url_for("show_product"))
+
+@app.route('/show_user')
+def show_user():
+    all_user= client[DB_NAME].user.find()
+    return render_template('show_user.template.html', user = all_user)
+
+@app.route('/create_user')
+def show_create_user():
+    return render_template('create_user.template.html')
+
+@app.route('/create_user', methods=['POST'])
+def create_user():
+    new_user = client[DB_NAME].user.insert_one({
+        "username":request.form.get("username"),
+        "email":request.form.get("email"),
+
+    })
+    return "created"
+
+
+
 
 
 
