@@ -35,7 +35,7 @@ def process_create_listing():
         "username": request.form.get("username")
 
     })
-    return redirect(url_for("show_product"))
+    return redirect(url_for("userproduct"))
 
 
 @app.route('/edit_listing/<product_id>')
@@ -58,6 +58,11 @@ def process_edit_product(product_id):
     })
     return redirect(url_for("show_product"))
 
+@app.route('/delete_listing/<product_id>')
+def delete_listing(product_id):
+    client[DB_NAME].carousell.remove({'_id': ObjectId(product_id)})
+    return redirect(url_for("show_product"))
+
 @app.route('/show_user')
 def show_user():
     all_user= client[DB_NAME].user.find()
@@ -74,7 +79,7 @@ def create_user():
         "email":request.form.get("email"),
 
     })
-    return "created"
+    return render_template('userproduct.template.html')
 
 
 
