@@ -15,7 +15,8 @@
         <li>Date Posted:{{r.date}}</li>
         <li>Posted By: {{r.username}}</li>
         <li>Email: {{r.email}}</li>
-        <li><a href="{{url_for('delete_listing',product_id=r._id)}}">delete</a>
+        <li><a href="{{url_for('delete_listing',product_id=r._id)}}">delete</a></li>
+
         
     </ul>
     {%endfor%}

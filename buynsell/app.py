@@ -22,7 +22,7 @@ def show_product():
 
 @app.route('/create_listing')
 def listing_product():
-    return render_template('listing.template.html')
+    return render_template('create_listing.template.html')
 
 @app.route('/create_listing', methods=['POST'])
 def process_create_listing():
@@ -35,7 +35,7 @@ def process_create_listing():
         "username": request.form.get("username")
 
     })
-    return redirect(url_for("userproduct"))
+    return "added"
 
 
 @app.route('/edit_listing/<product_id>')
