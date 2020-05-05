@@ -1,18 +1,20 @@
-from flask import Flask, render_template, request, redirect, url_for
+from flask import Flask, render_template, request, redirect, url_for,session, flash
 import pymongo
 import os
 import datetime
 from bson.objectid import ObjectId
+import sys
 from dotenv import load_dotenv
 load_dotenv()
 
-MONGO_URI = os.environ.get('MONGO_URI')
 
+MONGO_URI = os.environ.get('MONGO_URI')
 client = pymongo.MongoClient(MONGO_URI)
 DB_NAME = "carousell"
 
 # create the flask app and set the session
 app = Flask(__name__)
+
 
 
 @app.route('/show_product')
@@ -27,15 +29,17 @@ def listing_product():
 @app.route('/create_listing', methods=['POST'])
 def process_create_listing():
     client.carousell.carousell.insert_one({
-        "Name": request.form.get("name"),
-        "Price": request.form.get("price"),
-        "Description": request.form.get("description"),
+        "name": request.form.get("name"),
+        "price": request.form.get("price"),
+        "description": request.form.get("description"),
         "date": datetime.datetime.strptime(request.form.get('date'), "%Y-%m-%d"),
         "email": request.form.get("email"),
-        "username": request.form.get("username")
+        "username": request.form.get("username"),
+        "userid" : ObjectId()
 
     })
-    return "added"
+    return redirect(url_for("show_product"))
+
 
 
 @app.route('/edit_listing/<product_id>')
@@ -51,9 +55,9 @@ def process_edit_product(product_id):
         "_id": ObjectId(product_id)
     },{
         "$set": {
-                "Name":request.form.get("name"),
-                "Price":request.form.get("price"),
-                "Description":request.form.get("description")
+                "name":request.form.get("name"),
+                "price":request.form.get("price"),
+                "description":request.form.get("description")
         }
     })
     return redirect(url_for("show_product"))
@@ -63,23 +67,8 @@ def delete_listing(product_id):
     client[DB_NAME].carousell.remove({'_id': ObjectId(product_id)})
     return redirect(url_for("show_product"))
 
-@app.route('/show_user')
-def show_user():
-    all_user= client[DB_NAME].user.find()
-    return render_template('show_user.template.html', user = all_user)
 
-@app.route('/create_user')
-def show_create_user():
-    return render_template('create_user.template.html')
 
-@app.route('/create_user', methods=['POST'])
-def create_user():
-    new_user = client[DB_NAME].user.insert_one({
-        "username":request.form.get("username"),
-        "email":request.form.get("email"),
-
-    })
-    return render_template('userproduct.template.html')
 
 
 

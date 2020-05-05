@@ -7,15 +7,16 @@
     <title>Document</title>
 </head>
 <body>
+{{product}}
     <form method="POST">
         <label>Name:</label>
-        <input type="text" name="name" value="{{product.Name}}"/>
+        <input type="text" name="name" value="{{product.name}}"/>
         <br/>
         <label>Price:</label>
-        <input type="text" name="price" value="{{product.Price}}"/>
+        <input type="text" name="price" value="{{product.price}}"/>
         <br/>
         <label>Description:</label>
-        <input type="text" name="description" value="{{product.Description}}"/>
+        <input type="text" name="description" value="{{product.description}}"/>
         <br/>
         <input type="submit"/>
     </form>
