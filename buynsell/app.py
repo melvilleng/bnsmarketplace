@@ -60,14 +60,21 @@ def process_edit_product(product_id):
                 "description":request.form.get("description")
         }
     })
-    return redirect(url_for("show_product"))
+    return redirect(url_for('show_product'))
 
 @app.route('/delete_listing/<product_id>')
 def delete_listing(product_id):
     client[DB_NAME].carousell.remove({'_id': ObjectId(product_id)})
     return redirect(url_for("show_product"))
 
-
+@app.route('/display_listing/<product_id>')
+def display_listing(product_id):
+    product = client[DB_NAME].carousell.find({
+        "_id": ObjectId(product_id)
+    },{
+        'name': 1 , 'price' : 1
+    })
+    return render_template('display_listing.template.html', product= product)
 
 
 
