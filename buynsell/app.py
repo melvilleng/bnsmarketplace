@@ -44,10 +44,10 @@ def user_loader(username):
     login_user.id = user['username']
     return login_user
 
-@app.route('/show_product')
+@app.route('/')
 def show_product():
     all_product = client[DB_NAME].carousell.find()
-    return render_template('show_product.template.html', result = all_product)
+    return render_template('index.template.html', result = all_product)
 
 @app.route('/create_listing/<userid>')
 def listing_product(userid):
@@ -64,7 +64,7 @@ def process_create_listing(userid):
         "created_by":flask_login.current_user.id
 
     })
-    return redirect(url_for("private_section"))
+    return redirect(url_for('listing',userid=userid))
 
 
 
@@ -90,13 +90,6 @@ def process_edit_product(product_id,userid):
         }
     })
     return redirect(url_for('listing',product_id=product_id,userid=userid))
-
-# @app.route('/listing/<userid>')
-# def listing(userid):
-#     product_post = client[DB_NAME].carousell.find({
-#         'userid':ObjectId(userid)
-#     })
-#     return render_template('productpost.template.html',product_post = product_post)
 
 
 @app.route('/delete_listing/<product_id>/<userid>')
@@ -125,7 +118,7 @@ def signing_in():
         login_user = User()
         login_user.id = user['username']
         flask_login.login_user(login_user)
-        return "logged"
+        return redirect(url_for('show_product'))
     else:
         return "logged fail"
 
@@ -150,7 +143,7 @@ def creating_user():
         'email':email,
         'password':encrypt_password(password),
     })
-    return "done"
+    return redirect(url_for('login'))
 
 
 @app.route('/listing/<userid>')
