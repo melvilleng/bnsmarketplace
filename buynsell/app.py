@@ -49,18 +49,19 @@ def show_product():
     all_product = client[DB_NAME].carousell.find()
     return render_template('show_product.template.html', result = all_product)
 
-@app.route('/create_listing')
-def listing_product():
+@app.route('/create_listing/<userid>')
+def listing_product(userid):
     return render_template('create_listing.template.html')
 
-@app.route('/create_listing', methods=['POST'])
-def process_create_listing():
+@app.route('/create_listing/<userid>', methods=['POST'])
+def process_create_listing(userid):
     client.carousell.carousell.insert_one({
+        "userid":ObjectId(userid),
         "name": request.form.get("name"),
         "price": request.form.get("price"),
         "description": request.form.get("description"),
         "date": datetime.datetime.strptime(request.form.get('date'), "%Y-%m-%d"),
-        "created by":flask_login.current_user.id
+        "created_by":flask_login.current_user.id
 
     })
     return redirect(url_for("private_section"))
@@ -85,12 +86,20 @@ def process_edit_product(product_id):
                 "description":request.form.get("description")
         }
     })
-    return redirect(url_for('show_product'))
+    return render_template('productpost.template.html')
+
+@app.route('/listing/<userid>')
+def listing(userid):
+    product_post = client[DB_NAME].carousell.find({
+        'userid':ObjectId(userid)
+    })
+    return render_template('productpost.template.html',product_post = product_post)
+
 
 @app.route('/delete_listing/<product_id>')
 def delete_listing(product_id):
     client[DB_NAME].carousell.remove({'_id': ObjectId(product_id)})
-    return redirect(url_for("show_product"))
+    return render_template('productpost.template.html')
 
 
 @app.route('/login')
@@ -151,6 +160,7 @@ def logout():
 def userprofile(userid):
     userid= client[DB_NAME].user.find_one()
     return render_template('userprofile.template.html',userid=userid)
+
 
 
 
