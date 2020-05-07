@@ -91,12 +91,12 @@ def process_edit_product(product_id,userid):
     })
     return redirect(url_for('listing',product_id=product_id,userid=userid))
 
-@app.route('/listing/<userid>')
-def listing(userid):
-    product_post = client[DB_NAME].carousell.find({
-        'userid':ObjectId(userid)
-    })
-    return render_template('productpost.template.html',product_post = product_post)
+# @app.route('/listing/<userid>')
+# def listing(userid):
+#     product_post = client[DB_NAME].carousell.find({
+#         'userid':ObjectId(userid)
+#     })
+#     return render_template('productpost.template.html',product_post = product_post)
 
 
 @app.route('/delete_listing/<product_id>/<userid>')
@@ -152,10 +152,14 @@ def creating_user():
     })
     return "done"
 
-@app.route('/profile_product')
-@flask_login.login_required   
-def private_section():
-    return "one product" + flask_login.current_user.id
+
+@app.route('/listing/<userid>')
+@flask_login.login_required
+def listing(userid):
+    product_post = client[DB_NAME].carousell.find({
+        'userid':ObjectId(userid)
+    })
+    return render_template('productpost.template.html',product_post = product_post)
 
 @app.route('/logout')
 def logout():
