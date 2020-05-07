@@ -15,8 +15,8 @@
         <li>Description:{{p.description}}</li>
         <li>Date Posted:{{p.date}}</li>
         <li>Posted By:{{p.created_by}}</li>
-        <li><a href="{{url_for('process_edit_product',product_id=p._id)}}">edit</a></li>
-        <li><a href="{{url_for('delete_listing',product_id=p._id)}}">delete</a></li>
+        <li><a href="{{url_for('process_edit_product',product_id=p._id,userid=p.userid)}}">edit</a></li>
+        <li><a href="{{url_for('delete_listing',product_id=p._id,userid=p.userid)}}">delete</a></li>
 
         
     </ul>

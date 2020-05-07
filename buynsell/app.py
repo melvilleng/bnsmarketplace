@@ -68,15 +68,18 @@ def process_create_listing(userid):
 
 
 
-@app.route('/edit_listing/<product_id>')
-def show_editing_product(product_id):
+@app.route('/edit_listing/<product_id>/<userid>')
+def show_editing_product(product_id,userid):
     product = client[DB_NAME].carousell.find_one({
-        "_id": ObjectId(product_id)
+        "_id": ObjectId(product_id),
+        "userid":ObjectId(userid)
     })
-    return render_template('edit_listing.template.html', product= product)
+    return render_template('edit_listing.template.html', product= product,userid=userid)
 
-@app.route('/edit_listing/<product_id>', methods=["POST"])
-def process_edit_product(product_id):
+@app.route('/edit_listing/<product_id>/<userid>', methods=["POST"])
+def process_edit_product(product_id,userid):
+    
+    
     client[DB_NAME].carousell.update_one({
         "_id": ObjectId(product_id)
     },{
@@ -86,7 +89,7 @@ def process_edit_product(product_id):
                 "description":request.form.get("description")
         }
     })
-    return render_template('productpost.template.html')
+    return redirect(url_for('listing',product_id=product_id,userid=userid))
 
 @app.route('/listing/<userid>')
 def listing(userid):
@@ -96,10 +99,13 @@ def listing(userid):
     return render_template('productpost.template.html',product_post = product_post)
 
 
-@app.route('/delete_listing/<product_id>')
-def delete_listing(product_id):
-    client[DB_NAME].carousell.remove({'_id': ObjectId(product_id)})
-    return render_template('productpost.template.html')
+@app.route('/delete_listing/<product_id>/<userid>')
+def delete_listing(product_id,userid):
+    client[DB_NAME].carousell.remove({
+        "_id": ObjectId(product_id),
+        "userid":ObjectId(userid)
+    })
+    return redirect(url_for('listing',product_id=product_id,userid=userid))
 
 
 @app.route('/login')
