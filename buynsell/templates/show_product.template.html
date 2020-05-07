@@ -13,8 +13,7 @@
         <li>Price:{{r.price}}</li>
         <li>Description:{{r.description}}</li>
         <li>Date Posted:{{r.date}}</li>
-        <li>Posted By: {{r.username}}</li>
-        <li>Email: {{r.email}}</li>
+        <li>Posted By: {{r.created by}}</li>
         <li><a href="{{url_for('process_edit_product',product_id=r._id)}}">edit</a></li>
         <li><a href="{{url_for('delete_listing',product_id=r._id)}}">delete</a></li>
 

@@ -1,4 +1,4 @@
-from flask import Flask, render_template, request, redirect, url_for,session, flash
+from flask import Flask, render_template, request, redirect, url_for
 import pymongo
 import os
 import datetime
@@ -60,11 +60,10 @@ def process_create_listing():
         "price": request.form.get("price"),
         "description": request.form.get("description"),
         "date": datetime.datetime.strptime(request.form.get('date'), "%Y-%m-%d"),
-        "email": request.form.get("email"),
-        "username": request.form.get("username")
+        "created by":flask_login.current_user.id
 
     })
-    return redirect(url_for("show_product"))
+    return redirect(url_for("private_section"))
 
 
 
@@ -92,15 +91,6 @@ def process_edit_product(product_id):
 def delete_listing(product_id):
     client[DB_NAME].carousell.remove({'_id': ObjectId(product_id)})
     return redirect(url_for("show_product"))
-
-@app.route('/display_listing/<product_id>')
-def display_listing(product_id):
-    product = client[DB_NAME].carousell.find({
-        "_id": ObjectId(product_id)
-    },{
-        'name': 1 , 'price' : 1
-    })
-    return render_template('display_listing.template.html', product= product)
 
 
 @app.route('/login')
@@ -143,7 +133,7 @@ def creating_user():
     client[DB_NAME].user.insert_one({
         'username':username,
         'email':email,
-        'password':encrypt_password(password)
+        'password':encrypt_password(password),
     })
     return "done"
 
@@ -156,6 +146,15 @@ def private_section():
 def logout():
     flask_login.logout_user()
     return "logged out"
+
+@app.route('/userprofile/<userid>')
+def userprofile(userid):
+    userid= client[DB_NAME].user.find_one()
+    return render_template('userprofile.template.html',userid=userid)
+
+
+
+
 
 # "magic code" -- boilerplate
 if __name__ == '__main__':
