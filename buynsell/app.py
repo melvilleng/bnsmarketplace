@@ -23,8 +23,6 @@ login_manager = flask_login.LoginManager()
 login_manager.init_app(app)
 
 
-
-
 class User(flask_login.UserMixin):
     pass
 
@@ -44,19 +42,23 @@ def user_loader(username):
     login_user.id = user['username']
     return login_user
 
+
 @app.route('/')
 def show_product():
     all_product = client[DB_NAME].carousell.find()
     return render_template('index.template.html', result = all_product)
 
-@app.route('/create_listing/<userid>')
-def listing_product(userid):
+
+@app.route('/create_listing/<username>')
+def listing_product(username):
     return render_template('create_listing.template.html')
 
-@app.route('/create_listing/<userid>', methods=['POST'])
-def process_create_listing(userid):
+@app.route('/create_listing/<username>', methods=['POST'])
+def process_create_listing(username):
+
+
     client.carousell.carousell.insert_one({
-        "userid":ObjectId(userid),
+        "username":username,
         "name": request.form.get("name"),
         "price": request.form.get("price"),
         "description": request.form.get("description"),
@@ -64,8 +66,7 @@ def process_create_listing(userid):
         "created_by":flask_login.current_user.id
 
     })
-    return redirect(url_for('listing',userid=userid))
-
+    return redirect(url_for('listing',username=username))
 
 
 @app.route('/edit_listing/<product_id>/<userid>')
@@ -111,7 +112,7 @@ def signing_in():
     password = request.form.get('password')
 
     user = client[DB_NAME].user.find_one({
-        'username':username
+        'username': username
     }) 
 
     if user and verify_password(user['password'],password):
@@ -146,11 +147,11 @@ def creating_user():
     return redirect(url_for('login'))
 
 
-@app.route('/listing/<userid>')
+@app.route('/listing/<username>')
 @flask_login.login_required
-def listing(userid):
+def listing(username):
     product_post = client[DB_NAME].carousell.find({
-        'userid':ObjectId(userid)
+        'username':username
     })
     return render_template('productpost.template.html',product_post = product_post)
 

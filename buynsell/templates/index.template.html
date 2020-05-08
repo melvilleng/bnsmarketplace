@@ -1,23 +1,205 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="en">
+
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <title>Document</title>
+	<!-- Required meta tags -->
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+	<!-- Bootstrap CSS -->
+	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css"
+		integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+	<link rel="stylesheet" href="{{url_for('static', filename='style.css')}}">
+	<link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+	<link href="https://fonts.googleapis.com/css?family=Ubuntu|Dosis|Lacquer&display=swap" rel="stylesheet">
+	<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.12.1/css/all.css">
+	<title>SGW</title>
 </head>
+<header>
+	<!--Navbar start-->
+	<nav class="navbar navbar-expand-lg navbar-light bg-light">
+		<a class="navbar-brand" href="/">
+			<img src="static/image/sgwlogo.jpg" width = "55" alt="" class="d-inline-block align-middle mr-2"/>
+        </a>
+			<button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+            </button>
+
+			<div class="collapse navbar-collapse" id="navbarSupportedContent">
+				<ul class="navbar-nav mr-auto">
+					<li class="nav-item active">
+						<a class="nav-link" href="/"><b>HOME</b> <span class="sr-only">(current)</span></a>
+					</li>
+                {%if current_user.is_authenticated %}
+					{{current_user.get_id()}}
+                    <li><a href="{{url_for('process_create_listing',username=current_user.get_id())}}">create</a></li>
+                    <li class="nav-item">
+						<a class="nav-link" href="{{url_for('logout')}}"><b>logout</b></a>
+					</li>
+                
+					<li class="nav-item">
+						<a class="nav-link" href="faq.html"><b>FAQ</b></a>
+					</li>
+                  {%else%}
+                   
+                    
+                    <li class="nav-item">
+						<a class="nav-link" href="{{url_for('login')}}"><b>Login</b></a>
+					</li>
+                    <li class="nav-item">
+						<a class="nav-link" href="{{url_for('signup')}}"><b>Sign Up</b></a>
+					</li>
+					<li class="nav-item">
+						<a class="nav-link" href="faq.html"><b>FAQ</b></a>
+					</li>
+                {%endif%}
+				</ul>
+
+				<form class="form-inline">
+					<input class="form-control mr-sm-2" type="search" placeholder="Search" aria-label="Search">
+					<button type="submit">Search</button>
+				</form>
+
+
+			</div>
+	</nav>
+	<!--Navbar End-->
+
+	<!-- start jumbotron-->
+	<div class="jumbotron jumbotron-fluid mb-0" id="top-banner">
+		<div class="page-width text-center">
+			<h1 class="h1 mega-title mega-title--large"><b>SneakGateWay Shop</b></h1>
+			<p class="lead"><b>The Number One Place To Get Your Kicks</b></p>
+		</div>
+	</div>
+	<!--end jumbtron -->
+
+</header>
+
 <body>
-    {%for r in result %}
+
+	<!--Start of Card-->
+	<section>
+		<!-- <h4 class="text-center"><u><b>New Arrival</b></u></h4>
+		<div class="container">
+			<div class="card-deck">
+				<div class="card">
+					<img class="card-img-top" src="image/yeezypic/earth.PNG" alt="Card image cap">
+					<div class="card-body">
+						<h5 class="card-title">Yeezy Boost 350 V2 'Earth'</h5>
+						<h6 class="card-text">$500</h6>
+						<a href="yeezy.html" class="btn btn-primary stretched-link">View Page</a>
+					</div>
+				</div> -->
+
+	{%for r in result %}
     <ul>
         <li>Name:{{r.name}}</li>
         <li>Price:{{r.price}}</li>
         <li>Description:{{r.description}}</li>
         <li>Date Posted:{{r.date}}</li>
         <li>Posted By: {{r.created_by}}</li>
+        <li>{{r.userid}}</li>
+        
 
         
     </ul>
     {%endfor%}
+					
+				
+			</div>
+		</div>
 
+	</section>
+	<!--End of Card-->
+
+	<!--Start Of Footer-->
+	<footer>
+		<div class="container">
+			<div class="page-footer font-small black pt-4 mt-5">
+
+				<!-- Footer Links -->
+				<div class="container-fluid text-center text-md-left">
+
+					<!-- Grid row -->
+					<div class="row">
+
+						<!-- Grid column -->
+						<div class="col-md-6 mt-md-0 mt-3">
+
+							<!-- Content -->
+							<h5 class="text-uppercase"><b>Subscribe to us for latest update:</b></h5>
+							<div class="form-group">
+								<input type="email" class="form-control" id="email" placeholder="Enter email:">
+                </div>
+
+							</div>
+
+
+							<!-- Grid column -->
+
+							<div class="col-md-6 mb-md-0 mb-6">
+								<h5><b>Follow us:</b></h5>
+								<div class="row">
+									<div class="col">
+										<a
+											href="https://www.facebook.com/Sneak-Gateway-Shop-110418183924731/"><i class="fab fa-facebook-square fa-3x" aria-hidden="true"></i></a>
+										<a
+											href="https://www.instagram.com/hiddensneak/"><i class="fab fa-instagram fa-3x" aria-hidden="true"></i></a>
+									</div>
+								</div>
+
+
+
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+
+
+			<div class="container">
+				<div class="container-fluid" id="last-footer">
+					<div class="row">
+						<div class="col-md text-center">
+							<a href="index.html">Home</a>
+						</div>
+						<div class="col-md text-center">
+							<a href="contact.html">Contact us</a>
+						</div>
+						<div class="col-md text-center">
+							<a href="faq.html">FAQ</a>
+						</div>
+
+
+					</div>
+				</div>
+
+
+
+			</div>
+
+
+
+	</footer>
+
+
+
+
+
+
+
+	<!-- Optional JavaScript -->
+	<!-- jQuery first, then Popper.js, then Bootstrap JS -->
+	<script src="https://code.jquery.com/jquery-3.2.1.slim.min.js"
+		integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous">
+	</script>
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js"
+		integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous">
+	</script>
+	<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"
+		integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous">
+	</script>
 </body>
+
 </html>

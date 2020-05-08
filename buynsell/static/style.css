@@ -1,0 +1,60 @@
+body{
+    background-color:rgb(220,220,220);
+}
+
+
+#top-banner{
+    background-image:url("/static/image/banner.png");
+    background-size:cover;
+    background-position: center bottom;
+
+}
+
+.h1{
+    font-family: "Lacquer";
+   
+
+}
+
+.lead{
+    font-family: "Dosis";
+    color:red;
+    
+}
+
+h4{
+    padding-top:10px;
+    padding-bottom:10px;
+    font-family: "Ubuntu";
+    
+}
+
+.card{
+    padding:10px;
+    margin:10px;
+
+
+}
+
+.page-footer{
+    background-color:#858679;
+    color:black;
+}
+
+a{
+    color:black;
+}
+
+.form-group{
+    width:80%;
+}
+
+#last-footer{
+    background-color:#797a6f;
+    margin-bottom:20px;
+}
+
+#cart{
+    margin:10px;
+}
+
