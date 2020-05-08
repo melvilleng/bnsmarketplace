@@ -69,16 +69,16 @@ def process_create_listing(username):
     return redirect(url_for('listing',username=username))
 
 
-@app.route('/edit_listing/<product_id>/<userid>')
-def show_editing_product(product_id,userid):
+@app.route('/edit_listing/<product_id>/<username>')
+def show_editing_product(product_id,username):
     product = client[DB_NAME].carousell.find_one({
         "_id": ObjectId(product_id),
-        "userid":ObjectId(userid)
+        "username":username
     })
-    return render_template('edit_listing.template.html', product= product,userid=userid)
+    return render_template('edit_listing.template.html', product= product,username=username)
 
-@app.route('/edit_listing/<product_id>/<userid>', methods=["POST"])
-def process_edit_product(product_id,userid):
+@app.route('/edit_listing/<product_id>/<username>', methods=["POST"])
+def process_edit_product(product_id,username):
     
     
     client[DB_NAME].carousell.update_one({
@@ -90,16 +90,16 @@ def process_edit_product(product_id,userid):
                 "description":request.form.get("description")
         }
     })
-    return redirect(url_for('listing',product_id=product_id,userid=userid))
+    return redirect(url_for('listing',product_id=product_id,username=username))
 
 
-@app.route('/delete_listing/<product_id>/<userid>')
-def delete_listing(product_id,userid):
+@app.route('/delete_listing/<product_id>/<username>')
+def delete_listing(product_id,username):
     client[DB_NAME].carousell.remove({
         "_id": ObjectId(product_id),
         "userid":ObjectId(userid)
     })
-    return redirect(url_for('listing',product_id=product_id,userid=userid))
+    return redirect(url_for('listing',product_id=product_id,username=username))
 
 
 @app.route('/login')
@@ -160,10 +160,10 @@ def logout():
     flask_login.logout_user()
     return "logged out"
 
-@app.route('/userprofile/<userid>')
+@app.route('/userprofile/<username>')
 def userprofile(userid):
     userid= client[DB_NAME].user.find_one()
-    return render_template('userprofile.template.html',userid=userid)
+    return render_template('userprofile.template.html',username=username)
 
 
 

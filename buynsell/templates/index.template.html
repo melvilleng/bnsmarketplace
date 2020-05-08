@@ -31,8 +31,9 @@
 						<a class="nav-link" href="/"><b>HOME</b> <span class="sr-only">(current)</span></a>
 					</li>
                 {%if current_user.is_authenticated %}
-					{{current_user.get_id()}}
-                    <li><a href="{{url_for('process_create_listing',username=current_user.get_id())}}">create</a></li>
+                     <li class="nav-item">
+						<a class="nav-link" href="{{url_for('process_create_listing',username=current_user.get_id())}}">create</a>
+					</li>
                     <li class="nav-item">
 						<a class="nav-link" href="{{url_for('logout')}}"><b>logout</b></a>
 					</li>
@@ -99,7 +100,6 @@
         <li>Description:{{r.description}}</li>
         <li>Date Posted:{{r.date}}</li>
         <li>Posted By: {{r.created_by}}</li>
-        <li>{{r.userid}}</li>
         
 
         
