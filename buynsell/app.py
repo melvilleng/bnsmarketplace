@@ -97,7 +97,7 @@ def process_edit_product(product_id,username):
 def delete_listing(product_id,username):
     client[DB_NAME].carousell.remove({
         "_id": ObjectId(product_id),
-        "userid":ObjectId(userid)
+        "username":username
     })
     return redirect(url_for('listing',product_id=product_id,username=username))
 
@@ -121,7 +121,7 @@ def signing_in():
         flask_login.login_user(login_user)
         return redirect(url_for('show_product'))
     else:
-        return "logged fail"
+        return redirect(url_for('signing_in'))
 
 @app.route('/create_user')
 def signup():
