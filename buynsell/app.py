@@ -158,7 +158,7 @@ def listing(username):
 @app.route('/logout')
 def logout():
     flask_login.logout_user()
-    return "logged out"
+    return redirect(url_for('show_product'))
 
 @app.route('/userprofile/<username>')
 def userprofile(userid):
