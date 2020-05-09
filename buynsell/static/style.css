@@ -39,29 +39,66 @@ h4{
 .card-deck{
     display: flex;
     justify-content: space-evenly;
+    margin-bottom: 50px;
 }
 
-
-
-.page-footer{
-    background-color:#858679;
-    color:black;
-}
-
-a{
-    color:black;
-}
-
-.form-group{
-    width:80%;
-}
-
-#last-footer{
-    background-color:#797a6f;
-    margin-bottom:20px;
-}
 
 #cart{
     margin:10px;
+}
+
+#container-login{
+    width: 100%;
+    height:100%;
+    font-family: "Lacquer";
+    color: black;
+    
+    position: fixed;
+    width:340px;
+    height:325px;
+    top:50%;
+    left:50%;
+    margin-top: -139px;
+    margin-left: -169px;
+    border-radius : 4px;
+    border: 1px solid rgb(0, 0, 0);
+        border-radius:2px;
+
+}
+
+#form{
+    margin: 0 auto;
+    margin-top: 30px;
+}
+label{
+    display: inline-block;
+    margin-left:18px;
+    padding-top:30px;
+    font-size: 16px;
+}
+
+#low{
+    background : rgba(206, 243, 255, 0.712);
+    width:100%;
+    height:69px;
+    margin-top:20px;
+
+}
+input[type=text],
+input[type=password]{
+    padding-left:15px;
+    margin: 8px;
+    margin-top:12px;
+    margin-left:18px;
+    width: 290px;
+    height :35px;
+}
+
+input[type=submit]{
+    float:right;
+    margin-right:18px;
+    margin-top: 18px;
+    width:80px;
+    height:30px;
 }
 
