@@ -1,74 +1,6 @@
-<!doctype html>
-<html lang="en">
+{% extends "base.template.html" %}
 
-<head>
-	<!-- Required meta tags -->
-	<meta charset="utf-8">
-	<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-
-	<!-- Bootstrap CSS -->
-	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css"
-		integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
-	<link rel="stylesheet" href="{{url_for('static', filename='style.css')}}">
-	<link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
-	<link href="https://fonts.googleapis.com/css?family=Ubuntu|Dosis|Lacquer&display=swap" rel="stylesheet">
-	<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.12.1/css/all.css">
-	<title>SGW</title>
-</head>
-<header>
-	<!--Navbar start-->
-	<nav class="navbar navbar-expand-lg navbar-light bg-light">
-		<a class="navbar-brand" href="/">
-			<img src="static/image/sgwlogo.jpg" width = "55" alt="" class="d-inline-block align-middle mr-2"/>
-        </a>
-			<button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
-            <span class="navbar-toggler-icon"></span>
-            </button>
-
-			<div class="collapse navbar-collapse" id="navbarSupportedContent">
-				<ul class="navbar-nav mr-auto">
-					<li class="nav-item">
-						<a class="nav-link" href="/"><b>HOME</b> <span class="sr-only">(current)</span></a>
-					</li>
-                {%if current_user.is_authenticated %}
-                     <li class="nav-item">
-						<a class="nav-link" href="{{url_for('listing',username=current_user.get_id())}}"><b>My Listing</b></a>
-					</li>
-                     <li class="nav-item">
-						<a class="nav-link" href="{{url_for('process_create_listing',username=current_user.get_id())}}"><b>Create Listing</b></a>
-					</li>
-                    <li class="nav-item">
-						<a class="nav-link" href="{{url_for('logout')}}"><b>logout</b></a>
-					</li>
-                
-					<li class="nav-item">
-						<a class="nav-link" href="faq.html"><b>FAQ</b></a>
-					</li>
-                  {%else%}
-                   
-                    
-                    <li class="nav-item">
-						<a class="nav-link" href="{{url_for('login')}}"><b>Login</b></a>
-					</li>
-                    <li class="nav-item">
-						<a class="nav-link" href="{{url_for('signup')}}"><b>Sign Up</b></a>
-					</li>
-					<li class="nav-item">
-						<a class="nav-link" href="faq.html"><b>FAQ</b></a>
-					</li>
-                {%endif%}
-				</ul>
-
-				<form class="form-inline">
-					<input class="form-control mr-sm-2" type="search" placeholder="Search" aria-label="Search">
-					<button type="submit">Search</button>
-				</form>
-
-
-			</div>
-	</nav>
-	<!--Navbar End-->
-
+{%block content%}
 	<!-- start jumbotron-->
 	<div class="jumbotron jumbotron-fluid mb-0" id="top-banner">
 		<div class="page-width text-center">
@@ -78,7 +10,6 @@
 	</div>
 	<!--end jumbtron -->
 
-</header>
 
 <body>
 
@@ -86,9 +17,11 @@
 	<section>
     
 		<h4 class="text-center"><u><b>New Arrival</b></u></h4>
-		<div class="container">
-        {%for r in result %}
+
+        <div class="container-fluid">
+        
 			<div class="card-deck">
+            {%for r in result %}
 				<div class="card">
 					<img class="card-img-top" src="image/yeezypic/earth.PNG" alt="Card image cap">
 					<div class="card-body">
@@ -107,18 +40,14 @@
 						<a href="yeezy.html" class="btn btn-primary stretched-link">View Page</a>
 					</div>
 				</div>
+             {%endfor%}    
+            </div>
+        </div>
 
-	 {%endfor%}
-        
+	
+     
 
-        
-
-    
-					
-				
-			</div>
-		</div>
-
+    {%endblock%}
 	</section>
 	<!--End of Card-->
 

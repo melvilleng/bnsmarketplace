@@ -32,9 +32,16 @@ h4{
 .card{
     padding:10px;
     margin:10px;
-
-
+    min-width: 26rem;
+    max-width: 26rem;
 }
+
+.card-deck{
+    display: flex;
+    justify-content: space-evenly;
+}
+
+
 
 .page-footer{
     background-color:#858679;
