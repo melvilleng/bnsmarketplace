@@ -1,28 +1,41 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <title>Document</title>
-</head>
-<body>
-    
-    {%for p in product_post %}
-    <ul>
-        <li>Name:{{p.name}}</li>
-        <li>Price:{{p.price}}</li>
-        <li>Description:{{p.description}}</li>
-        <li>Date Posted:{{p.date}}</li>
-        <li>Posted By:{{p.created_by}}</li>
-        <li><a href="{{url_for('process_edit_product',product_id=p._id,username=p.username)}}">edit</a></li>
-        <li><a href="{{url_for('delete_listing',product_id=p._id,username=p.username)}}">delete</a></li>
+{% extends "base.template.html" %}
 
-        
-    </ul>
-    {%endfor%}
+{%block content%}
 
-      
-   
-</body>
-</html>
+	<!--Start of Card-->
+	<section>
+
+		<div class="container-fluid">
+
+			<div class="card-deck">
+				{%for p in product_post %}
+				<div class="card">
+					<img class="card-img-top" src="image/yeezypic/earth.PNG" alt="Card image cap">
+					<div class="card-body">
+						<h5 class="card-title">{{p.name}}</h5>
+						<h6 class="card-text">
+
+
+							<ul>
+							
+								<li>Price:{{p.price}}</li>
+								<li>Description:{{p.description}}</li>
+								<li>Date Posted:{{p.date}}</li>
+								<li>Posted By:{{p.created_by}}</li>
+
+							</ul>
+
+
+						</h6>
+						<a class="btn btn-outline-success active" href="{{url_for('process_edit_product',product_id=p._id,username=p.username)}}"  
+                        role="button">edit</a>
+                    
+                        <a class="btn btn-outline-danger active" href="{{url_for('delete_listing',product_id=p._id,username=p.username)}}"
+                        role="button">delete</a>
+					</div>
+				</div>
+				{%endfor%}
+			</div>
+		</div>
+
+		{%endblock%}
