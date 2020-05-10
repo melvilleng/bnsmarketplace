@@ -123,7 +123,7 @@ def signing_in():
         login_user = User()
         login_user.id = user['username']
         flask_login.login_user(login_user)
-        return redirect(url_for('show_product'))
+        return redirect(url_for('listing',username=login_user.id))
     else:
         return redirect(url_for('signing_in'))
 
@@ -157,7 +157,7 @@ def listing(username):
     product_post = client[DB_NAME].carousell.find({
         'username':username
     })
-    return render_template('productpost.template.html',product_post = product_post)
+    return render_template('my_listing.template.html',product_post = product_post)
 
 @app.route('/logout')
 def logout():
