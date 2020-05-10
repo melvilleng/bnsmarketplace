@@ -31,13 +31,13 @@
                         <ul>
         
                             <li>Price:{{r.price}}</li>
-                            <li>Description:{{r.description}}</li>
                             <li>Date Posted:{{r.date}}</li>
-                            <li>Posted By: {{r.created_by}}</li>
+                            
                         </ul>
                        
                         </h6>
-						<a href="yeezy.html" class="btn btn-primary stretched-link">View Page</a>
+						<a href="{{url_for('oneproductpage',product_id=r._id)}}" class="btn btn-primary stretched-link">View Page</a>
+                        
 					</div>
 				</div>
              {%endfor%}    
