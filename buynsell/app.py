@@ -60,7 +60,9 @@ def process_create_listing(username):
     client.carousell.carousell.insert_one({
         "username":username,
         "name": request.form.get("name"),
+        "image": request.form.get("image"),
         "price": request.form.get("price"),
+        "size": request.form.get("size"),
         "description": request.form.get("description"),
         "date": datetime.datetime.strptime(request.form.get('date'), "%Y-%m-%d"),
         "created_by":flask_login.current_user.id
@@ -86,7 +88,9 @@ def process_edit_product(product_id,username):
     },{
         "$set": {
                 "name":request.form.get("name"),
+                "image": request.form.get("image"),
                 "price":request.form.get("price"),
+                "size": request.form.get("size"),
                 "description":request.form.get("description")
         }
     })

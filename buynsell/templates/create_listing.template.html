@@ -8,20 +8,27 @@
 </head>
 <body>
     <form method="POST">
-        <label>Name:</label>
-        <input type="text" name="name"/>
+        <label>Listing Title:</label>
+        <input type="text" name="name" placeholder="Listing Title"/>
+        <br/>
+        <h5>Product Detail</h5>
+        <label>Size:</label>
+        <input type="text" name="size" placeholder="Size"/>
         <br/>
         <label>Price:</label>
-        <input type="text" name="price"/>
+        <input type="text" name="price" placeholder="Price"/>
         <br/>
         <label>Description:</label>
-        <input type="text" name="description"/>
+        <input type="textarea" name="description" placeholder="Description"/>
+        <br/>
+        <label>Image:</label>
+        <input type="url" name="image" placeholder="Paste image URL(eg. Https://alibaba.com)" pattern="https://.*"/>
         <br/>
         <label>Date:</label>
         <input type="date" name="date"/>
         <br/>
 
-        <input type="submit"/>
+        <input type="submit" value="List Now"/>
     </form>
 </body>
 </html>
