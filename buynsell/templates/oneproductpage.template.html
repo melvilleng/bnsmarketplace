@@ -1,0 +1,36 @@
+{% extends "base.template.html" %}
+
+{%block content%}
+
+	<!--Start of Card-->
+	<section>
+		<div class="container-fluid">
+
+			<div class="card-deck">
+				<div class="card">
+					<img class="card-img-top" src="{{oneproductpage.image}}" alt="Card image cap">
+					<div class="card-body">
+						<h3 class="card-title"><b>{{oneproductpage.name}}</b></h3>
+						<h6 class="card-text">
+
+
+							<ul>
+                                
+								<li>Price:{{oneproductpage.price}}</li>
+                                <li>Price:{{oneproductpage.size}}</li>
+								<li>Description:{{oneproductpage.description}}</li>
+								<li>Date Posted:{{oneproductpage.date}}</li>
+								
+
+							</ul>
+
+
+						</h6>
+				
+					</div>
+				</div>
+			
+			</div>
+		</div>
+
+		{%endblock%}

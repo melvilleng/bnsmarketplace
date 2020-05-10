@@ -72,29 +72,27 @@ def process_create_listing(username):
 
 
 @app.route('/edit_listing/<product_id>/<username>')
-def show_editing_product(product_id,username):
+def show_editing_product(product_id, username):
     product = client[DB_NAME].carousell.find_one({
         "_id": ObjectId(product_id),
-        "username":username
+        "username": username
     })
-    return render_template('edit_listing.template.html', product= product,username=username)
+    return render_template('edit_listing.template.html', product= product, username=username)
 
 @app.route('/edit_listing/<product_id>/<username>', methods=["POST"])
-def process_edit_product(product_id,username):
-    
-    
+def process_edit_product(product_id, username):
     client[DB_NAME].carousell.update_one({
         "_id": ObjectId(product_id)
-    },{
+    }, {
         "$set": {
-                "name":request.form.get("name"),
+                "name": request.form.get("name"),
                 "image": request.form.get("image"),
-                "price":request.form.get("price"),
+                "price": request.form.get("price"),
                 "size": request.form.get("size"),
-                "description":request.form.get("description")
+                "description": request.form.get("description")
         }
     })
-    return redirect(url_for('listing',product_id=product_id,username=username))
+    return redirect(url_for('listing', product_id=product_id, username=username))
 
 
 @app.route('/delete_listing/<product_id>/<username>')
@@ -169,8 +167,14 @@ def userprofile(userid):
     userid= client[DB_NAME].user.find_one()
     return render_template('userprofile.template.html',username=username)
 
+@app.route('/oneproductpage/<product_id>', methods=["GET"])
+def oneproductpage(product_id):
 
+    oneproductpage = client[DB_NAME].carousell.find_one({
+        '_id': ObjectId(product_id)
 
+    })
+    return render_template('oneproductpage.template.html', oneproductpage=oneproductpage)
 
 
 
