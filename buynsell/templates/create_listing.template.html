@@ -1,83 +1,91 @@
 {% extends "base.template.html"%}
 
+<div>
 {%block content%}
 
 
-	<!--Page Title Start-->
-	<pagetitle>
-		<div class="page-width text-center" id="contactus">
-			<h1 class="h1 mega-title mega-title--large"><b>Create Listing</b></h1>
-		</div>
-	</pagetitle>
-	<!--Page Title End-->
-		<form method="POST">
-			<div class="container-fluid" id="container-create">
-				<div id="createform">
+<!--Page Title Start-->
+<pagetitle>
+	<div class="page-width text-center" id="createandedit">
+		<h1 class="h1 mega-title mega-title--large"><b>Create Listing</b></h1>
+	</div>
+</pagetitle>
+<!--Page Title End-->
+<form method="POST">
+	<div class="container-fluid" id="container-create">
+		<div id="createform">
+			<div class="row d-flex justify-content-center">
+				<div class="form-group col-6">
+					<label class="c">Listing Title:</label>
+					<div>
+						<input type="text" name="name" placeholder="Listing Title"/>
+                            </div>
+					</div>
+				</div>
+				<div class="row d-flex justify-content-center">
+					<div class="form-group col-6">
+						<label class="c">Size:</label>
+						<div>
+							<input type="text" name="size" placeholder="Size"/>
+                                </div>
+						</div>
+					</div>
 					<div class="row d-flex justify-content-center">
 						<div class="form-group col-6">
-							<label class="c">Listing Title:</label>
-                            <div>
-							<input type="text" name="name" placeholder="Listing Title"/>
-                            </div>
-                        </div>
-					</div>
+
+							<label class="c">Price:</label>
+							<div>
+								<input type="text" name="price" placeholder="Price"/>
+                                    </div>
+							</div>
+						</div>
+
+						<div class="row d-flex justify-content-center">
+
+							<div class="form-group col-6">
+								<label class="c">Description:</label>
+								<div>
+									<textarea type="textarea" name="description" placeholder="Description" rows="3"></textarea>
+								</div>
+							</div>
+						</div>
+
 						<div class="row d-flex justify-content-center">
 							<div class="form-group col-6">
-								<label class="c">Size:</label>
-                                <div>
-								<input type="text" name="size" placeholder="Size"/>
-                                </div>
-            </div>
+								<label class="c">Image:</label>
+								<div>
+									<input type="url" name="image" placeholder="Paste image URL(eg. Https://alibaba.com)" pattern="https://.*"/>
+                                        </div>
+								</div>
+
+
 							</div>
 							<div class="row d-flex justify-content-center">
 								<div class="form-group col-6">
-                        
-									<label class="c">Price:</label>
-                                    <div>
-									<input type="text" name="price" placeholder="Price"/>
-                                    </div>
-            </div>
-								</div>
-                                
-								<div class="row d-flex justify-content-center">
-                                
-									<div class="form-group col-6">
-										<label class="c">Description:</label>
-                                        <div>
-										<textarea type="textarea" name="description" placeholder="Description" rows="3"></textarea>
-                                        </div>
-									</div>
-								</div>
-
-								<div class="row d-flex justify-content-center">
-									<div class="form-group col-6">
-										<label class="c">Image:</label>
-                                        <div>
-										<input type="url" name="image" placeholder="Paste image URL(eg. Https://alibaba.com)" pattern="https://.*"/>
-                                        </div>
-								</div>
-
-
-									</div>
-									<div class="row d-flex justify-content-center">
-										<div class="form-group col-6">
-											<label class="c">Date:</label>
-                                            <div>
-											<input type="date" name="date"/>
+									<label class="c">Date:</label>
+									<div>
+										<input type="date" name="date"/>
                                             </div>
 
-								</div>
-										</div>
-
-										<div class="row d-flex justify-content-center">
-											<input type="submit" value="List Now"/>
-							</div>
-
-
-										</div>
 									</div>
+								</div>
 
-		</form>
+                                <div class="row">
+								<div class="d-flex justify-content-center col-6">
+									<a class="btn btn-outline-success active" id="register"
+										href="{{url_for('show_product')}}" role="button"><b>Back</b></a>
+								</div>
+								<div class="d-flex justify-content-center col-6">
+									<input class="btn btn-primary active" type="submit" value="List Now" role="button"/>
+                                </div>
+								</div>
+
+							</div>
+                        </div>
+
+
+</form>
 
 
 {%endblock%}
+</div>
