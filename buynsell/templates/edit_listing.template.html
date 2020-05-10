@@ -8,8 +8,11 @@
 </head>
 <body>
     <form method="POST">
-        <label>Name:</label>
+        <label>Listing Title:</label>
         <input type="text" name="name" value="{{product.name}}"/>
+        <br/>
+        <label>Size:</label>
+        <input type="text" name="name" value="{{product.size}}"/>
         <br/>
         <label>Price:</label>
         <input type="text" name="price" value="{{product.price}}"/>
@@ -17,7 +20,10 @@
         <label>Description:</label>
         <input type="text" name="description" value="{{product.description}}"/>
         <br/>
-        <input type="submit"/>
+        <label>Image</label>
+        <input type="url" name="image" value="{{product.image}}"/>
+        <br/>
+        <input type="submit" value="EDIT"/>
     </form>
 </body>
 </html>
