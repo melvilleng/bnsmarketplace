@@ -49,9 +49,15 @@ h4{
     margin:10px;
 }
 
+#listingid{
+    margin-top:2px;
+}
+
+
 .form-container{
-    margin-top: 100px;
+    margin-top:12px;
     border-radius:10px;
     padding:30px;
     box-shadow: 1px 1px 11px 1px;
 }
+
