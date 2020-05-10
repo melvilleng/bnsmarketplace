@@ -18,29 +18,22 @@
 			<div class="card-deck">
 				{%for p in product_post %}
 				<div class="card">
+                <div class="thumbnail">
 					<img class="card-img-top" src="{{p.image}}" alt="Card image cap">
+                </div>
 					<div class="card-body">
 						<h3 class="card-title"><b>{{p.name}}</b></h3>
 						<h6 class="card-text">
-
-
-							<ul>
-                                
-								<li>Price:{{p.price}}</li>
-                                <li>Price:{{p.size}}</li>
-								<li>Description:{{p.description}}</li>
-								<li>Date Posted:{{p.date}}</li>
-								
-
-							</ul>
-
+                         <h4>${{p.price}}</h4>
+                        <h5><label><b>Size: </b></label>US{{p.size}}</h5>
 
 						</h6>
-						<a class="btn btn-outline-success active" href="{{url_for('process_edit_product',product_id=p._id,username=p.username)}}"  
-                        role="button">edit</a>
-                    
+                       <div class="row" style="justify-content:space-around;">
                         <a class="btn btn-outline-danger active" href="{{url_for('delete_listing',product_id=p._id,username=p.username)}}"
-                        role="button">delete</a>
+                        role="button"><b>Delete</b></a>
+                        <a class="btn btn-outline-success active" href="{{url_for('process_edit_product',product_id=p._id,username=p.username)}}"  
+                        role="button"><b>Edit</b></a>
+                        </div>
 					</div>
 				</div>
 				{%endfor%}

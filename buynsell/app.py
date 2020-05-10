@@ -56,9 +56,8 @@ def listing_product(username):
 @app.route('/create_listing/<username>', methods=['POST'])
 def process_create_listing(username):
 
-
     client.carousell.carousell.insert_one({
-        "username":username,
+        "username": username,
         "name": request.form.get("name"),
         "image": request.form.get("image"),
         "price": request.form.get("price"),
@@ -139,7 +138,7 @@ def creating_user():
         'username':username
     })
     if current_user:
-        return "Email in database"
+        return redirect(url_for('signup'))
 
     client[DB_NAME].user.insert_one({
         'username':username,
@@ -162,12 +161,9 @@ def logout():
     flask_login.logout_user()
     return redirect(url_for('show_product'))
 
-@app.route('/userprofile/<username>')
-def userprofile(userid):
-    userid= client[DB_NAME].user.find_one()
-    return render_template('userprofile.template.html',username=username)
 
-@app.route('/oneproductpage/<product_id>', methods=["GET"])
+
+@app.route('/oneproductpage/<product_id>')
 def oneproductpage(product_id):
 
     oneproductpage = client[DB_NAME].carousell.find_one({
@@ -175,6 +171,13 @@ def oneproductpage(product_id):
 
     })
     return render_template('oneproductpage.template.html', oneproductpage=oneproductpage)
+
+@app.route('/userprofile/<username>')
+def userprofile(username):
+    user=client[DB_NAME].user.find_one({
+        'username':username
+    })
+    return render_template('userprofile.template.html',user=user)
 
 
 

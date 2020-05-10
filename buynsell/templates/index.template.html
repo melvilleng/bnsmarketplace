@@ -16,24 +16,23 @@
 	<!--Start of Card-->
 	<section>
     
-		<h4 class="text-center"><u><b>New Arrival</b></u></h4>
+		<h4 class="text-center"><u><b>Market Place</b></u></h4>
 
         <div class="container-fluid">
         
 			<div class="card-deck">
             {%for r in result %}
 				<div class="card">
+                <div class="thumbnail">
 					<img class="card-img-top" src="{{r.image}}" alt="Card image cap">
+                    </div>
 					<div class="card-body">
-						<h5 class="card-title">{{r.name}}</h5>
-						<h6 class="card-text">
-                        
-                        <ul>
-        
-                            <li>Price:{{r.price}}</li>
-                            <li>Date Posted:{{r.date}}</li>
+						<h3 class="card-title"><b>{{r.name}}</b></h3>
+						<h6 class="card-text">                                               
+                            <h5>Price: ${{r.price}}</h5>
+                            <h5>Date Posted: {{r.date}}</h5>
                             
-                        </ul>
+                        
                        
                         </h6>
 						<a href="{{url_for('oneproductpage',product_id=r._id)}}" class="btn btn-primary stretched-link">View Page</a>

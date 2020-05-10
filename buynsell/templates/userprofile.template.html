@@ -1,17 +1,27 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <title>Document</title>
-</head>
-<body>
-        <li>Name:{{userid.username}}</li>
-        <li>email:{{userid.email}}</li>
-        <li>pw:{{userid.password}}</li>
-    
-      
-   
-</body>
-</html>
+{% extends "base.template.html"%}
+{%block content%}
+
+<!--Page Title Start-->
+
+<div class="container-fluid" style="margin-top:100px;">
+    <div class="row justify-content-center">
+        <div class="col-12 col-sm-6 col-md-3">
+            <form class="form-container" method="POST">
+            <h3 class="text-center"><b>{{user.username}} Profile</b></h3>
+            <div class="form-group">
+                <label><b>Username: </b></label>
+                <h4>{{user.username}}</h4>
+            </div>
+            <div class="form-group">
+                <label><b>Email: </b></label>
+                 <h4>{{user.email}}</h4>
+            </div>
+            <div class="row" style="justify-content:space-around;">
+            <a type="button" class="btn btn-success" href="{{url_for('show_product')}}"><b>Back</b></a>
+            </div>
+            </form>
+        </div>
+    </div>
+</div>
+
+{%endblock%}
