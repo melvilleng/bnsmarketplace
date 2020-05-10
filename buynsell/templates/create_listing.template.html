@@ -1,34 +1,83 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <title>Document</title>
-</head>
-<body>
-    <form method="POST">
-        <label>Listing Title:</label>
-        <input type="text" name="name" placeholder="Listing Title"/>
-        <br/>
-        <h5>Product Detail</h5>
-        <label>Size:</label>
-        <input type="text" name="size" placeholder="Size"/>
-        <br/>
-        <label>Price:</label>
-        <input type="text" name="price" placeholder="Price"/>
-        <br/>
-        <label>Description:</label>
-        <input type="textarea" name="description" placeholder="Description"/>
-        <br/>
-        <label>Image:</label>
-        <input type="url" name="image" placeholder="Paste image URL(eg. Https://alibaba.com)" pattern="https://.*"/>
-        <br/>
-        <label>Date:</label>
-        <input type="date" name="date"/>
-        <br/>
+{% extends "base.template.html"%}
 
-        <input type="submit" value="List Now"/>
-    </form>
-</body>
-</html>
+{%block content%}
+
+
+	<!--Page Title Start-->
+	<pagetitle>
+		<div class="page-width text-center" id="contactus">
+			<h1 class="h1 mega-title mega-title--large"><b>Create Listing</b></h1>
+		</div>
+	</pagetitle>
+	<!--Page Title End-->
+		<form method="POST">
+			<div class="container-fluid" id="container-create">
+				<div id="createform">
+					<div class="row d-flex justify-content-center">
+						<div class="form-group col-6">
+							<label class="c">Listing Title:</label>
+                            <div>
+							<input type="text" name="name" placeholder="Listing Title"/>
+                            </div>
+                        </div>
+					</div>
+						<div class="row d-flex justify-content-center">
+							<div class="form-group col-6">
+								<label class="c">Size:</label>
+                                <div>
+								<input type="text" name="size" placeholder="Size"/>
+                                </div>
+            </div>
+							</div>
+							<div class="row d-flex justify-content-center">
+								<div class="form-group col-6">
+                        
+									<label class="c">Price:</label>
+                                    <div>
+									<input type="text" name="price" placeholder="Price"/>
+                                    </div>
+            </div>
+								</div>
+                                
+								<div class="row d-flex justify-content-center">
+                                
+									<div class="form-group col-6">
+										<label class="c">Description:</label>
+                                        <div>
+										<textarea type="textarea" name="description" placeholder="Description" rows="3"></textarea>
+                                        </div>
+									</div>
+								</div>
+
+								<div class="row d-flex justify-content-center">
+									<div class="form-group col-6">
+										<label class="c">Image:</label>
+                                        <div>
+										<input type="url" name="image" placeholder="Paste image URL(eg. Https://alibaba.com)" pattern="https://.*"/>
+                                        </div>
+								</div>
+
+
+									</div>
+									<div class="row d-flex justify-content-center">
+										<div class="form-group col-6">
+											<label class="c">Date:</label>
+                                            <div>
+											<input type="date" name="date"/>
+                                            </div>
+
+								</div>
+										</div>
+
+										<div class="row d-flex justify-content-center">
+											<input type="submit" value="List Now"/>
+							</div>
+
+
+										</div>
+									</div>
+
+		</form>
+
+
+{%endblock%}
