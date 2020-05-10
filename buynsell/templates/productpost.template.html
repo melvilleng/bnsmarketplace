@@ -1,6 +1,14 @@
 {% extends "base.template.html" %}
 
 {%block content%}
+<!-- start jumbotron-->
+	<div class="jumbotron jumbotron-fluid mb-0" id="top-banner">
+		<div class="page-width text-center">
+			<h1 class="h1 mega-title mega-title--large"><b>{{current_user.get_id()}}</b></h1>
+			<p class="lead"><b>LISTINGS</b></p>
+		</div>
+	</div>
+	<!--end jumbtron -->
 
 	<!--Start of Card-->
 	<section>
