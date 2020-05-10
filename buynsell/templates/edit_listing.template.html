@@ -1,30 +1,58 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <title>Document</title>
-</head>
-<body>
-    <form method="POST">
-        <label>Listing Title:</label>
-        <input type="text" name="name" value="{{product.name}}"/>
-        <br/>
-        <label>Size:</label>
-        <input type="text" name="name" value="{{product.size}}"/>
-        <br/>
-        <label>Price:</label>
-        <input type="text" name="price" value="{{product.price}}"/>
-        <br/>
-        <label>Description:</label>
-        <input type="text" name="description" value="{{product.description}}" 
-        placeholder="Paste image URL(eg. Https://alibaba.com)" pattern="https://.*"/>
-        <br/>
-        <label>Image</label>
-        <input type="url" name="image" value="{{product.image}}"/>
-        <br/>
-        <input type="submit" value="EDIT"/>
-    </form>
-</body>
-</html>
+{% extends "base.template.html"%}
+{%block content%}
+
+
+<!--Page Title Start-->
+<pagetitle>
+	<div class="page-width text-center">
+		<h1 class="h1 mega-title mega-title--large"><b>EDIT Listing</b></h1>
+	</div>
+</pagetitle>
+<!--Page Title End-->
+<div class="container-fluid" id="listingid">
+    <div class="row justify-content-center">
+        <div class="col-12 col-sm-6 col-md-3">
+            <form class="form-container" method="POST">
+
+                 <div class="form-group">
+                <label><b>Listing Title: </b></label>
+                <input type="text" class="form-control" name="name" placeholder="Listing Title" value="{{product.name}}"/>
+                </div>
+		
+					<div class="form-group">
+						<label><b>Size: </b></label>
+						<input type="text" class="form-control" name="size" placeholder="Size" value="{{product.size}}"/>
+					</div>
+					
+						<div class="form-group">
+							<label><b>Price: </b></label>
+							<input type="text" class="form-control" name="price" placeholder="Price" value="{{product.price}}"/>
+                        </div>
+							<div class="form-group">
+								<label><b>Description: </b></label>
+									<textarea type="textarea" class="form-control" name="description" 
+                                    placeholder="Description" rows="3" value="{{product.description}}" ></textarea>	
+							</div>
+						
+							<div class="form-group">
+								<label><b>Image: </b></label>
+								<input type="url" name="image" class="form-control" value="{{product.image}}"
+                                placeholder="Paste image URL(eg. Https://alibaba.com)" pattern="https://.*"/>      
+							</div>
+
+                                <div class="row" style="justify-content:space-around;">
+                                <a type="button" class="btn btn-success" href="{{url_for('listing',username=current_user.get_id())}}"><b>Back</b></a>
+                                <button type="submit" class="btn btn-primary"><b>EDIT</b></button>
+                                 </div>
+
+                                
+							
+                    </form>    
+            </div>
+        </div>
+    </div>
+
+
+
+
+{%endblock%}

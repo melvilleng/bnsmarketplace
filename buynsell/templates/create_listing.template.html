@@ -1,12 +1,10 @@
 {% extends "base.template.html"%}
-
-<div>
 {%block content%}
 
 
 <!--Page Title Start-->
 <pagetitle>
-	<div class="page-width text-center" id="createandedit">
+	<div class="page-width text-center">
 		<h1 class="h1 mega-title mega-title--large"><b>Create Listing</b></h1>
 	</div>
 </pagetitle>
@@ -60,29 +58,3 @@
 
 
 {%endblock%}
-
-
-<div class="container-fluid">
-    <div class="row justify-content-center">
-        <div class="col-12 col-sm-6 col-md-3">
-            <form class="form-container" method="POST">
-            <div class="form-group">
-                <label><b>Username: </b></label>
-                <input type="text" class="form-control" name="username" placeholder="Username"/>
-            </div>
-            <div class="form-group">
-                <label><b>Email: </b></label>
-                <input type="text" class="form-control" name="email" placeholder="Email"/>
-            </div>
-            <div class="form-group">
-                <label><b>Password: </b></label>
-                <input type="password" class="form-control" name="password" placeholder="Password"/>
-            </div>
-            <div class="row" style="justify-content:space-around;">
-            <a type="button" class="btn btn-success" href="{{url_for('show_product')}}"><b>Back</b></a>
-            <button type="submit" class="btn btn-primary"><b>Create Account</b></button>
-            </div>
-            </form>
-        </div>
-    </div>
-</div>
