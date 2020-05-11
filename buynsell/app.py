@@ -237,7 +237,8 @@ def search(searchtext):
 
     client[DB_NAME].carousell.create_index([('name','text')])
     
-    found = client[DB_NAME].carousell.find({"$text": {"$search": searchtext}
+    found = client[DB_NAME].carousell.find({
+        "$text": {"$search": searchtext}
     }).limit(10)
 
     return render_template('search.template.html',searchtext=searchtext,found=found)
