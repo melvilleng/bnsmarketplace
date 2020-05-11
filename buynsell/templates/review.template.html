@@ -1,8 +1,62 @@
 
     
-    {% for r in all_review.buyerreview%}
+    {% for r in all_review.sellerreview%}
         {{r}}
     {%endfor%}
-    
 
 
+{% extends "base.template.html" %}
+
+{%block content%}
+<!-- start jumbotron-->
+	<div class="jumbotron jumbotron-fluid mb-0" id="top-banner">
+		<div class="page-width text-center">
+			<h1 class="h1 mega-title mega-title--large"><b>{{all_review.username}}</b></h1>
+			<p class="lead"><b>Review</b></p>
+		</div>
+	</div>
+	<!--end jumbtron -->
+
+	<!--Start of Card-->
+	<section>
+    <h1>Buyer Review</h1>
+		<div class="container-fluid">
+       
+			<div class="card-deck">
+				{% for r in all_review.buyerreview%}
+				<div class="card">
+					<div class="card-body">
+						<h3 class="card-title"><b>Buyer Review</b></h3>
+						<h6 class="card-text">
+                         <h4>${{r}}</h4>
+                        
+
+						</h6>
+					</div>
+                </div>
+				
+				{%endfor%}
+			</div>
+		</div>
+
+        <h1>Buyer Review</h1>
+		<div class="container-fluid">
+       
+			<div class="card-deck">
+				{% for r in all_review.buyerreview%}
+				<div class="card">
+					<div class="card-body">
+						<h3 class="card-title"><b>Buyer Review</b></h3>
+						<h6 class="card-text">
+                         <h4>${{r}}</h4>
+                        
+
+						</h6>
+					</div>
+                </div>
+				
+				{%endfor%}
+			</div>
+		</div>
+
+		{%endblock%}
