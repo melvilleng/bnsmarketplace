@@ -3,7 +3,6 @@
 {%block content%}
 
 	<!--Start of Card-->
-	<section>
 		<div class="container-fluid">
 
 			<div class="card-deck">
@@ -24,16 +23,19 @@
                         {{oneproductpage.date}}</h6>
                          <h6><label><b>Posted By: </b></label>
                         {{oneproductpage.username}}</h6>
+                        </h6>
+                        <div class="row" style="justify-content:space-around;">
                         <a type="button" class="btn btn-success" href="{{url_for('show_product')}}"><b>Back</b></a>
                         <a type="button" class="btn btn-primary" href="{{url_for('userprofile',username=oneproductpage.username)}}"><b>Contact</b></a>
+                        </div>
 
-
-						</h6>
+						
 				
 					</div>
 				</div>
 			
 			</div>
 		</div>
+    <!--End of Card-->
 
 		{%endblock%}

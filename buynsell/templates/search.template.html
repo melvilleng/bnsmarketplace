@@ -3,21 +3,25 @@
 
 <h3>Search:{{searchtext}}</h3>
 
-
-
-             <h1>Seller Review</h1>
 		<div class="container-fluid">
-       
 			<div class="card-deck">
 				 {% for r in found %}
 				<div class="card">
+                 <div class="thumbnail">
+                        <img class="card-img-top" src="{{r.image}}" alt="Card image cap">
+                        </div>
 					<div class="card-body">
-						<h3 class="card-title"><b>Seller Review</b></h3>
+                        <h3 class="card-title"><b>{{r.name}}</b></h3>
 						<h6 class="card-text">
-                         <a href="{{url_for('oneproductpage',product_id=r._id)}}"><h6>{{r.name}}</h6></a>
+                         <h4>${{r.price}}</h4>
+                         </h6>
+                        <div class="row" style="justify-content:space-around;">
+                          <a type="button" class="btn btn-success" href="{{url_for('show_product')}}"><b>Back</b></a>
+                         <a type="button" class="btn btn-primary" href="{{url_for('oneproductpage',product_id=r._id)}}">View More</a>
+                        </div>
                         
 
-						</h6>
+						
 					</div>
                 </div>
 				
@@ -25,13 +29,30 @@
 			</div>
 		</div>
 
-				
+<!-- 				
+Start of Card
+		<div class="container-fluid">
 
+			<div class="card-deck">
+            {%for r in found%}
+				<div class="card">
+                <div class="thumbnail">
+                 
+					<img class="card-img-top" src="{{r.image}}" alt="Card image cap">
+                    </div>
+					<div class="card-body">
+						<h3 class="card-title"><b>{{r.name}}</b></h3>
+                       
+                        <a type="button" class="btn btn-success" href="{{url_for('show_product')}}"><b>Back</b></a>
+                        <a href="{{url_for('oneproductpage',product_id=r._id)}}"><h6>{{r.name}}</h6></a>
+
+					</div>
+				</div>
+			{%endfor%}
+			</div>
+		</div> -->
+    
+    <!--End of Card-->
                                 
 							
-                    </form>    
-
-
-
-
 {%endblock%}

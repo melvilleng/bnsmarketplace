@@ -235,7 +235,7 @@ def receive_text():
 @app.route('/search/<searchtext>', methods=['GET'])
 def search(searchtext):
 
-    client[DB_NAME].carousell.create_index([('name','text')])
+    client[DB_NAME].carousell.create_index([('name', 'text')])
     
     found = client[DB_NAME].carousell.find({
         "$text": {"$search": searchtext}
