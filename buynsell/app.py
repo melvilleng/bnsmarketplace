@@ -188,12 +188,12 @@ def review(username):
         })
     return render_template('review.template.html', all_review=all_review)
 
-@app.route('/create_review/<username>')
-def review_product(username):
-    return render_template('create_review.template.html')
+@app.route('/create_buyerreview/<username>')
+def review_buyerproduct(username):
+    return render_template('create_buyerreview.template.html')
 
-@app.route('/create_review/<username>', methods=["POST"])
-def create_review(username):
+@app.route('/create_buyerreview/<username>', methods=["POST"])
+def create_buyerreview(username):
 
     client[DB_NAME].user.update({
         'username': username
@@ -206,7 +206,27 @@ def create_review(username):
             }
 
     })
-    return 'review added'
+    return redirect(url_for('review',username=username))
+
+@app.route('/create_sellerreview/<username>')
+def review_sellerproduct(username):
+    return render_template('create_sellerreview.template.html')
+
+@app.route('/create_sellerreview/<username>', methods=["POST"])
+def create_sellerreview(username):
+
+    client[DB_NAME].user.update({
+        'username': username
+    },{ 
+        '$push':{
+            'sellerreview':{
+                '$each': [request.form.get('sellerreview')],
+
+            }
+            }
+
+    })
+    return redirect(url_for('review',username=username))
 
 
 
