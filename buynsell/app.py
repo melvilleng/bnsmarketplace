@@ -180,6 +180,37 @@ def userprofile(username):
     return render_template('userprofile.template.html',user=user)
 
 
+@app.route('/review/<username>')
+def review(username):
+
+    all_review = client[DB_NAME].user.find_one({
+        'username': username
+        })
+    return render_template('review.template.html', all_review=all_review)
+
+@app.route('/create_review/<username>')
+def review_product(username):
+    return render_template('create_review.template.html')
+
+@app.route('/create_review/<username>', methods=["POST"])
+def create_review(username):
+
+    client[DB_NAME].user.update({
+        'username': username
+    },{ 
+        '$push':{
+            'buyerreview':{
+                '$each': [request.form.get('buyerreview')],
+
+            }
+            }
+
+    })
+    return 'review added'
+
+
+
+
 
 # "magic code" -- boilerplate
 if __name__ == '__main__':
