@@ -1,10 +1,3 @@
-
-    
-    {% for r in all_review.sellerreview%}
-        {{r}}
-    {%endfor%}
-
-
 {% extends "base.template.html" %}
 
 {%block content%}
@@ -43,7 +36,7 @@
 		<div class="container-fluid">
        
 			<div class="card-deck">
-				{% for r in all_review.buyerreview%}
+				 {% for r in all_review.sellerreview%}
 				<div class="card">
 					<div class="card-body">
 						<h3 class="card-title"><b>Buyer Review</b></h3>
