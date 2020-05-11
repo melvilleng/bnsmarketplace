@@ -228,6 +228,19 @@ def create_sellerreview(username):
     })
     return redirect(url_for('review',username=username))
 
+@app.route('/search', methods=['POST'])
+def receive_text():
+    return redirect(url_for('search',searchtext=request.form.get('searchtext')))
+
+@app.route('/search/<searchtext>', methods=['GET'])
+def search(searchtext):
+
+    client[DB_NAME].carousell.create_index([('name','text')])
+    
+    found = client[DB_NAME].carousell.find({"$text": {"$search": searchtext}
+    }).limit(10)
+
+    return render_template('search.template.html',searchtext=searchtext,found=found)
 
 
 
