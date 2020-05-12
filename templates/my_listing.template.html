@@ -5,16 +5,17 @@
 	<div class="jumbotron jumbotron-fluid mb-0" id="top-banner">
 		<div class="page-width text-center">
 			<h1 class="h1 mega-title mega-title--large"><b>{{current_user.get_id()}}</b></h1>
-			<p class="lead"><b>LISTINGS</b></p>
+			<h3 class="lead"><b>LISTINGS</b></h3>
+            <a type="button" class="btn btn-warning btn-lg" href="{{url_for('review',username=current_user.get_id())}}"><b>My Review</b></a>
 		</div>
 	</div>
 	<!--end jumbtron -->
 
 	<!--Start of Card-->
 	<section>
-        {%for p in product_post %}
+        
+        {%for p in product_post %}   
 		<div class="container-fluid">
-        <a type="button" class="btn btn-primary" href="{{url_for('review',username=p.username)}}"><b>My Review</b></a>
 			<div class="card-deck">
 				
 				<div class="card">

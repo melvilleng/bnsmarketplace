@@ -12,7 +12,7 @@
 
 	<!--Start of Card-->
 	<section>
-    <a type="button" class="btn btn-primary" href="{{url_for('create_buyerreview',username=all_review.username)}}"><b>Buyer Review</b></a>
+    <a type="button" class="btn btn-info btn-lg" href="{{url_for('create_buyerreview',username=all_review.username)}}"><b>Buyer Review</b></a>
 		<div class="container-fluid">
        
 			<div class="card-deck">
@@ -31,7 +31,7 @@
 				{%endfor%}
 			</div>
 		</div>
-    <a type="button" class="btn btn-primary" href="{{url_for('create_sellerreview',username=all_review.username)}}"><b>Seller Review</b></a>
+    <a type="button" class="btn btn-success btn-lg" href="{{url_for('create_sellerreview',username=all_review.username)}}"><b>Seller Review</b></a>
 		<div class="container-fluid">
        
 			<div class="card-deck">
