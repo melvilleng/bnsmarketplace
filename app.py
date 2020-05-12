@@ -64,7 +64,7 @@ def process_create_listing(username):
         "size": request.form.get("size"),
         "description": request.form.get("description"),
         "date": datetime.datetime.strptime(request.form.get('date'), "%Y-%m-%d"),
-        "created_by":flask_login.current_user.id
+        "created_by": flask_login.current_user.id
 
     })
     return redirect(url_for('listing',username=username))
