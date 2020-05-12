@@ -124,6 +124,29 @@ def signing_in():
     else:
         return redirect(url_for('signing_in'))
 
+@app.route('/')
+def signuponbanner():
+    return render_template('signup.template.html')
+
+@app.route('/',methods=["POST"])
+def creating_user_banner():
+    username = request.form.get('username')
+    email = request.form.get('email')
+    password = request.form.get('password')
+
+    current_user= client[DB_NAME].user.find_one({
+        'username':username
+    })
+    if current_user:
+        return redirect(url_for('signup'))
+
+    client[DB_NAME].user.insert_one({
+        'username':username,
+        'email':email,
+        'password':encrypt_password(password),
+    })
+    return redirect(url_for('login'))
+
 @app.route('/create_user')
 def signup():
     return render_template('signup.template.html')

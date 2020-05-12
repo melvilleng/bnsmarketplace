@@ -1,14 +1,11 @@
-$(document).ready(function(){
-    $('#s-button').click(function(){
-        $(this).hide();
-        $('#search-overtake').slideFadeToggle();
-    });
+document.getElementById('button').addEventListener('click',
+function(){
+    document.querySelector('.signup').style.display='flex';
+    document.querySelector('.card-deck').style.display='none';
 });
 
-window.onclick = function(event){
-    if(event.target == document.getElementById('search-overtake')){
-        document.getElementById('search-overtake').style.display = 'none';
-        $('s-button').show()
-    }
-
-}
+document.querySelector('.close').addEventListener('click',
+function(){
+    document.querySelector('.signup').style.display='none';
+    document.querySelector('.card-deck').style.display='flex';
+});
