@@ -40,10 +40,10 @@
 				 {% for r in all_review.sellerreview%}
 				<div class="card">
 					<div class="card-body">
-						<h3 class="card-title"><b>Seller Review</b></h3>
+						<h4 class="card-title"><b>Review By: {{r.name}}</b></h4>
 						<h6 class="card-text">
-                         <h4>{{r}}</h4>
-                        
+                         <h4>{{r.sellerreview}}</h4>
+                       
 
 						</h6>
 					</div>
