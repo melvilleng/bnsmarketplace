@@ -11,19 +11,19 @@
 					<img class="card-img-top" src="{{oneproductpage.image}}" alt="Card image cap">
                     </div>
 					<div class="card-body">
-						<h3 class="card-title"><b>{{oneproductpage.name}}</b></h3>
-						<h6 class="card-text">
+						<h2 class="card-title"><b>{{oneproductpage.name}}</b></h2>
+						<h5 class="card-text">
                         <h4>${{oneproductpage.price}}</h4>
                         <h5><label><b>Size: </b></label>
                         US{{oneproductpage.size}}</h5>
                         <h5><label><b>Description: </b></label></h5>
-                        <h6>{{oneproductpage.description}}</h6>
+                        <h5>{{oneproductpage.description}}</h5>
                         <br>
-                         <h6><label><b>Date Posted: </b></label>
-                        {{oneproductpage.date}}</h6>
-                         <h6><label><b>Posted By: </b></label>
-                        {{oneproductpage.username}}</h6>
-                        </h6>
+                         <h5><label><b>Date Posted: </b></label>
+                        {{oneproductpage.date}}</h5>
+                         <h5><label><b>Posted By: </b></label>
+                        {{oneproductpage.username}}</h5>
+                        </h5>
                         <div class="row" style="justify-content:space-around;">
                         <a type="button" class="btn btn-success" href="{{url_for('show_product')}}"><b>Back</b></a>
                         <a type="button" class="btn btn-primary" href="{{url_for('userprofile',username=oneproductpage.username)}}"><b>Contact</b></a>

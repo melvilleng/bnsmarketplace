@@ -223,7 +223,8 @@ def create_buyerreview(username):
     },{ 
         '$push':{
             'buyerreview':{
-                '$each': [request.form.get('buyerreview')],
+                'buyerreview': request.form.get('buyerreview'),
+                'name': request.form.get('name')
 
             }
             }
