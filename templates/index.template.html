@@ -6,8 +6,11 @@
 		<div class="page-width text-center">
 			<h1 class="h1 mega-title mega-title--large"><b>SneakGateWay MarketPlace</b></h1>
 			<h3 class="h3 mega-title mega-title--large"><b>BUY , SELL AND TRADE!!</b></h3>
+            {%if current_user.is_authenticated %}
+
+            {%else%}
             <button type="submit" id="button" class="btn btn-primary"><b>Create Account</b></button>
-            
+            {%endif%}
             <div class="signup">
                 
                     <div class="signup-head">
