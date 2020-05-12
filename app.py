@@ -48,7 +48,7 @@ def show_product():
     all_product = client[DB_NAME].carousell.find()
     return render_template('index.template.html', result = all_product)
 
-
+# Create Listing of Selling product
 @app.route('/create_listing/<username>')
 def listing_product(username):
     return render_template('create_listing.template.html')
@@ -69,7 +69,7 @@ def process_create_listing(username):
     })
     return redirect(url_for('listing',username=username))
 
-
+# Editing the listed product
 @app.route('/edit_listing/<product_id>/<username>')
 def show_editing_product(product_id, username):
     product = client[DB_NAME].carousell.find_one({
@@ -93,7 +93,7 @@ def process_edit_product(product_id, username):
     })
     return redirect(url_for('listing', product_id=product_id, username=username))
 
-
+# Delete the Listing that was posted
 @app.route('/delete_listing/<product_id>/<username>')
 def delete_listing(product_id,username):
     client[DB_NAME].carousell.remove({
@@ -102,7 +102,7 @@ def delete_listing(product_id,username):
     })
     return redirect(url_for('listing',product_id=product_id,username=username))
 
-
+# log in into site
 @app.route('/login')
 def login():
     return render_template('login.template.html')
@@ -124,6 +124,7 @@ def signing_in():
     else:
         return redirect(url_for('signing_in'))
 
+#sign up through the banner
 @app.route('/')
 def signuponbanner():
     return render_template('signup.template.html')
@@ -147,6 +148,7 @@ def creating_user_banner():
     })
     return redirect(url_for('login'))
 
+#sign up 
 @app.route('/create_user')
 def signup():
     return render_template('signup.template.html')
@@ -170,7 +172,7 @@ def creating_user():
     })
     return redirect(url_for('login'))
 
-
+#user current profile listing
 @app.route('/listing/<username>')
 @flask_login.login_required
 def listing(username):
@@ -179,13 +181,14 @@ def listing(username):
     })
     return render_template('my_listing.template.html',product_post = product_post)
 
+#logout
 @app.route('/logout')
 def logout():
     flask_login.logout_user()
     return redirect(url_for('show_product'))
 
 
-
+#show only one product
 @app.route('/oneproductpage/<product_id>')
 def oneproductpage(product_id):
 
@@ -195,6 +198,7 @@ def oneproductpage(product_id):
     })
     return render_template('oneproductpage.template.html', oneproductpage=oneproductpage)
 
+#userprofile
 @app.route('/userprofile/<username>')
 def userprofile(username):
     user=client[DB_NAME].user.find_one({
@@ -202,7 +206,7 @@ def userprofile(username):
     })
     return render_template('userprofile.template.html',user=user)
 
-
+#Buying review
 @app.route('/review/<username>')
 def review(username):
 
@@ -232,6 +236,7 @@ def create_buyerreview(username):
     })
     return redirect(url_for('review',username=username))
 
+#selling review
 @app.route('/create_sellerreview/<username>')
 def review_sellerproduct(username):
     return render_template('create_sellerreview.template.html')
@@ -253,6 +258,7 @@ def create_sellerreview(username):
     })
     return redirect(url_for('review',username=username))
 
+#search feature
 @app.route('/search', methods=['POST'])
 def receive_text():
     return redirect(url_for('search',searchtext=request.form.get('searchtext')))
