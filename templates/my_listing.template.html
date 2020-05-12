@@ -12,11 +12,11 @@
 
 	<!--Start of Card-->
 	<section>
-
+        {%for p in product_post %}
 		<div class="container-fluid">
-
+        <a type="button" class="btn btn-primary" href="{{url_for('review',username=p.username)}}"><b>My Review</b></a>
 			<div class="card-deck">
-				{%for p in product_post %}
+				
 				<div class="card">
                 <div class="thumbnail">
 					<img class="card-img-top" src="{{p.image}}" alt="Card image cap">
