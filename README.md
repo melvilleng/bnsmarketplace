@@ -27,6 +27,8 @@ When the screen, reaches medium or small screen the navigation bar will change t
 Drop down menu will appear when u press the hamburger icon which will link you to different pages of the website. 
 On large screen device the navigation bar will display all the link at the top.
 
+## ER Diagram ##
+ER Diagram can be found [here](https://github.com/melvilleng/bnsmarketplace/blob/master/misc/image.png)
 
 ## User Stories ##
 * As a user - I want to be able to see all the listing of shoes
@@ -95,7 +97,7 @@ Future features
 
 ## Wireframes ##
 Wireframes was created to help me to visualise and design a layout for my website. The wireframe can 
-be view via this [link](https://github.com/melvilleng/bnsmarketplace/blob/master/Wireframe).
+be view via this [link](https://github.com/melvilleng/bnsmarketplace/blob/master/misc/Wireframe).
 
 ## Technologies Used ##
 Below are a list of framework, programming languages and tools used for the website:
@@ -111,6 +113,7 @@ Below are a list of framework, programming languages and tools used for the webs
 * Jinjia2
 * Mongodb
 * Heroku
+* Erdplus
 
 
 
