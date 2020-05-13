@@ -198,13 +198,9 @@ After that I will go to the config vars to put in the Mongo_URI and Secret_Key.
 
 
 ## Credit ##
-Images
 Stockx
 Goat
-
-Website
 Stackoverflow
-
 Special thanks to my [lecturer](https://github.com/kunxin-chor/) for the guidance.
 
 
