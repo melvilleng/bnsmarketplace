@@ -95,7 +95,7 @@ Future features
 
 ## Wireframes ##
 Wireframes was created to help me to visualise and design a layout for my website. The wireframe can 
-be view via this [link](https://github.com/melvilleng/Sneaker-website/tree/master/wireframe).
+be view via this [link](https://github.com/melvilleng/bnsmarketplace/blob/master/Wireframe).
 
 ## Technologies Used ##
 Below are a list of framework, programming languages and tools used for the website:
