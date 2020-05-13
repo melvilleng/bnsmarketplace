@@ -10,49 +10,50 @@
 </pagetitle>
 <!--Page Title End-->
 <div class="container-fluid" id="listingid">
-    <div class="row justify-content-center">
-        <div class="col-12 col-sm-6 col-md-3">
-            <form class="form-container" method="POST">
+	<div class="row justify-content-center">
+		<div class="col-12 col-sm-6 col-md-3">
+			<form class="form-container" method="POST">
 
-                 <div class="form-group">
-                <label><b>Listing Title: </b></label>
-                <input type="text" class="form-control" name="name" placeholder="Listing Title"/>
+				<div class="form-group">
+					<label><b>Listing Title: </b></label>
+					<input type="text" class="form-control" name="name" placeholder="Listing Title"/>
                 </div>
-		
+
 					<div class="form-group">
 						<label><b>Size: US </b></label>
 						<input type="text" class="form-control" name="size" placeholder="Size"/>
 					</div>
-					
+
 						<div class="form-group">
 							<label><b>Price: </b></label>
 							<input type="text" class="form-control" name="price" placeholder="Price"/>
                         </div>
 							<div class="form-group">
 								<label><b>Description: </b></label>
-									<input type="textarea" class="form-control" name="description" placeholder="Description"/>	
-							</div>
-						
-							<div class="form-group">
-								<label><b>Image: </b></label>
-								<input type="url" name="image" class="form-control" placeholder="Paste image URL(eg. Https://alibaba.com)" pattern="https://.*"/>      
+								<input type="textarea" class="form-control" name="description" placeholder="Description"/>
 							</div>
 
 								<div class="form-group">
-									<label><b>Date: </b></label>						
-								    <input type="date" class="form-control" name="date"/>                                          
-								</div>
-                                <div class="row" style="justify-content:space-around;">
-                                <a type="button" class="btn btn-success" href="{{url_for('show_product')}}"><b>Back</b></a>
-                                <button type="submit" class="btn btn-primary"><b>Create Listing</b></button>
-                                 </div>
+									<label><b>Image: </b></label>
+									<input type="url" name="image" class="form-control" placeholder="Paste image URL(eg. Https://alibaba.com)" pattern="https://.*"/>
+							</div>
 
-                                
-							
-                    </form>    
-            </div>
-        </div>
-    </div>
+									<div class="form-group">
+										<label><b>Date: </b></label>
+										<input type="date" class="form-control" name="date"/>
+								</div>
+										<div class="row" style="justify-content:space-around;">
+											<a type="button" class="btn btn-success"
+												href="{{url_for('show_product')}}"><b>Back</b></a>
+											<button type="submit" class="btn btn-primary"><b>Create Listing</b></button>
+										</div>
+
+
+
+			</form>
+		</div>
+	</div>
+</div>
 
 
 
