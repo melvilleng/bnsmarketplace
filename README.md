@@ -119,47 +119,46 @@ Below are a list of framework, programming languages and tools used for the webs
 
 ### Testing ###
 * Home Page:
-When I click on the home,login,sign up and view page button it will redirect me to the individual pages.
-When I click on the create account the create account pop up will appear and after I fill in all the details it will bring me to the login page to login.
-The search feature is working. Tested with typing jordan and only jordan related product listing will be shown.
+    When I click on the home,login,sign up and view page button it will redirect me to the individual pages.
+    When I click on the create account the create account pop up will appear and after I fill in all the details it will bring me to the login page to login.
+    The search feature is working. Tested with typing jordan and only jordan related product listing will be shown.
 
 
 * Sign up page
-Tested with filling in username, email and password and press the create account button 
-It will bring me to the login page,  I am able to login mean the sign up feature is working.
-
-The back button will bring me back to the home page
+    Tested with filling in username, email and password and press the create account button 
+    It will bring me to the login page,  I am able to login mean the sign up feature is working.
+    The back button will bring me back to the home page
 
 * Login Page
-After typing in the username and password I have register earlier I am able to be redirect to my listing page which only sign in user can view.
+    After typing in the username and password I have register earlier I am able to be redirect to my listing page which only sign in user can view.
 
-Press on the sign-up button it will redirect me to the sign up page.
+    Press on the sign-up button it will redirect me to the sign up page.
 
-After logging in sign up and sign in on navbar got change to My listing, Creating listing and logout
+    After logging in sign up and sign in on navbar got change to My listing, Creating listing and logout
 
-When create listing is clicked on, it will be redirect to the create listing page where i fill in the listing title ,size, price, description , upload the image URL and date.
-Once all is fill up will press the create listing page and redirect back to my listing page where the info I just fill in earlier was added on my listing page. 
+    When create listing is clicked on, it will be redirect to the create listing page where i fill in the listing title ,size, price, description , upload the image URL and date.
+    Once all is fill up will press the create listing page and redirect back to my listing page where the info I just fill in earlier was added on my listing page. 
 
 * My listing page
 
-My review button will bring to the logged user review page.
+    My review button will bring to the logged user review page.
 
-The edit button on the listing will bring me to the edit listing page where I can edit each attribute. Tested one by one and all updated on what I change.
+    The edit button on the listing will bring me to the edit listing page where I can edit each attribute. Tested one by one and all updated on what I change.
 
-Tested the delete button and the listing is deleted.
+    Tested the delete button and the listing is deleted.
 
-Test the logout feature and the user was logged out.
+    Test the logout feature and the user was logged out.
 
 * More info product page
 
-The back button will bring me back to the home page.
-The contact seller will bring me to the posted or seller info page.
+    The back button will bring me back to the home page.
+    The contact seller will bring me to the posted or seller info page.
 
 * Seller info page
-When I click on the review me button it will bring me to the review page
+    When I click on the review me button it will bring me to the review page
 
 * Review page
-On the review page when I click on the buyer or seller review button I will direct to their individual review page where I can type the review I give for the buyer or seller and leave the name behind. Once I click on the create reciew button my review will be added on the review page.
+    On the review page when I click on the buyer or seller review button I will direct to their individual review page where I can type the review I give for the buyer or seller and leave the name behind. Once I click on the create reciew button my review will be added on the review page.
 
 
 
